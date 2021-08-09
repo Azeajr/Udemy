@@ -14,8 +14,6 @@ const SearchScreen = () => {
     });
   };
 
-  console.log(results);
-
   return (
     <View>
       <SearchBar
@@ -24,19 +22,10 @@ const SearchScreen = () => {
         onTermSubmit={() => searchApi(term)}
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
-      <Text>We have found {results.length} results</Text>
-      <ResultsList 
-        results={filterResultsByPrice("$") }
-        title="Cost Effective" 
-      />
-      <ResultsList
-      results={filterResultsByPrice("$$") }
-      title="Bit Pricier"
-      />
-      <ResultsList
-      results={filterResultsByPrice("$$$") }
-      title="Big Spender"
-      />
+      <Text style={{ marginLeft: 15}}>We have found {results.length} results</Text>
+      <ResultsList results={filterResultsByPrice("$")} title="Cost Effective" />
+      <ResultsList results={filterResultsByPrice("$$")} title="Bit Pricier" />
+      <ResultsList results={filterResultsByPrice("$$$")} title="Big Spender" />
     </View>
   );
 };

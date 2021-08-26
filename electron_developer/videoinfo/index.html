@@ -10,11 +10,23 @@
     <button type="submit">Get Info</button>
   </form>
 
+  <h1 id="result"></h1>
+
   <script>
-    document.querySelector("form").addEventListener("submit", (event)=>{
+    const electron = require("electron");
+    const { ipcRenderer } = electron;
+
+    document.querySelector("form").addEventListener("submit", (event) => {
       event.preventDefault();
-      const file = document.querySelector('input').files[0];
-      
+      const { path } = document.querySelector("input").files[0];
+      // Sends our path to the Main Process
+      ipcRenderer.send("video:submit", path);
+    });
+
+    ipcRenderer.on("video:metadata", (event, duration) => {
+      document.querySelector(
+        "#result"
+      ).innerHTML = `Video is ${duration} seconds`;
     });
   </script>
 </body>

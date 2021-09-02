@@ -24,13 +24,7 @@ const menuTemplate = [
       { label: "New Todo" },
       {
         label: "Quit",
-        accelerator: (() => {
-          if (process.platform === "darwin") {
-            return "Command+Q";
-          } else {
-            return "Ctrl+Q;"
-          }
-        })(),
+        accelerator: process.platform === "darwin" ? "Command+Q" : "Ctrl+Q",
         click() {
           app.quit();
         },

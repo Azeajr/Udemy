@@ -23,12 +23,19 @@ function createAddWindow() {
     height: 200,
     width: 300,
     title: "Add New Todo",
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
   });
   addWindow.loadFile("add.html");
+  //* Garbage collection
+  addWindow.on("close", () => (addWindow = null));
 }
 
 ipcMain.on("todo:add", (event, todo) => {
   mainWindow.webContents.send("todo:add", todo);
+  addWindow.close();
 });
 
 const menuTemplate = [

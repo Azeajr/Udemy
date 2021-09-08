@@ -3,6 +3,7 @@ const electron = require("electron");
 const { app, BrowserWindow, Menu } = electron;
 
 let mainWindow;
+let addWindow;
 
 app.on("ready", () => {
   mainWindow = new BrowserWindow({});
@@ -11,17 +12,32 @@ app.on("ready", () => {
    * Preferred method
    */
   mainWindow.loadFile("main.html");
+  mainWindow.on("closed", () => app.quit());
 
   const mainMenu = Menu.buildFromTemplate(menuTemplate);
   Menu.setApplicationMenu(mainMenu);
 });
+
+function createAddWindow() {
+  addWindow = new BrowserWindow({
+    height: 200,
+    width: 300,
+    title: "Add New Todo",
+  });
+  addWindow.loadFile("add.html");
+}
 
 const menuTemplate = [
   // Old setup
   {
     label: "File",
     submenu: [
-      { label: "New Todo" },
+      {
+        label: "New Todo",
+        click() {
+          createAddWindow();
+        },
+      },
       {
         label: "Quit",
         accelerator: process.platform === "darwin" ? "Command+Q" : "Ctrl+Q",
@@ -40,5 +56,21 @@ const menuTemplate = [
 if (process.platform === "darwin") {
   menuTemplate.unshift({
     label: "",
+  });
+}
+
+if (process.env.NODE_ENV !== "production") {
+  menuTemplate.push({
+    label: "DEVELOPER!!!",
+    submenu: [
+      {
+        label: "Toggle Developer Tools",
+        accelerator:
+          process.platform === "darwin" ? "Command+Alt+I" : "Ctrl+Shift+I",
+        click(item, focusedWindow) {
+          focusedWindow.toggleDevTools();
+        },
+      },
+    ],
   });
 }

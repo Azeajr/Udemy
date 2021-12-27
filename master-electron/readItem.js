@@ -30,7 +30,7 @@ module.exports = (url, callback) => {
 
             // Execute callback with new item object
             callback({ title, screenshot, url })
-            
+
             // Clean up
             offscreenWindow.close()
             offscreenWindow = null

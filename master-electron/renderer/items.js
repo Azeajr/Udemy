@@ -2,7 +2,16 @@
 // DOM nodes
 let items = document.getElementById('items')
 
-exports.addItem = item => {
+// Tracks items in storage
+exports.storage = JSON.parse(localStorage.getItem('readit-items')) || []
+
+// Persists storage
+exports.save = () => {
+    localStorage.setItem('readit-items', JSON.stringify(this.storage))
+}
+
+// Add new item
+exports.addItem = (item, isNew = false) => {
     // Create a new DOM node
     let itemNode = document.createElement('div')
 
@@ -10,8 +19,19 @@ exports.addItem = item => {
     itemNode.setAttribute('class', 'read-item')
 
     // Add inner HTML
-    itemNode.innerHTML = `<img scr="${item.screenshot}"><h2>${item.title}</h2>`
+    itemNode.innerHTML = `<img src="${item.screenshot}"><h2>${item.title}</h2>`
 
     //Append new node to "items"
     items.appendChild(itemNode)
+
+    
+    if (isNew) {
+        this.storage.push(item)
+    this.save()
+    }
 }
+
+// Add items from storage when app loads
+this.storage.forEach(item => {
+    this.addItem(item)
+});

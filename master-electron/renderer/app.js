@@ -42,7 +42,7 @@ addItem.addEventListener('click', e => {
 
 ipcRenderer.on('new-item-success', (e, newItem) => {
     // Add new item to "items" node
-    items.addItem(newItem)
+    items.addItem(newItem, true)
 
     // Enable buttons
     toggleModalButton();
@@ -54,5 +54,5 @@ ipcRenderer.on('new-item-success', (e, newItem) => {
 })
 
 itemUrl.addEventListener('keyup', e => {
-    if(e.key === 'Enter') addItem.click()
+    if (e.key === 'Enter') addItem.click()
 })

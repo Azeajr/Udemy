@@ -22,7 +22,7 @@ const ExpenseForm = (props) => {
     event.preventDefault();
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       // T00:00:00 is necessary to properly format dateString
       date: new Date(enteredDate + "T00:00:00"),
     };

@@ -2,14 +2,15 @@ import { useState } from "react";
 import "./App.css";
 
 export const replaceCamelWithSpace = (ColorName) => {
-  return ColorName.replace(/\B([A-Z])\B/g, ' $1')
+  return ColorName.replace(/\B([A-Z])\B/g, " $1");
 };
 
 const App = () => {
-  const [buttonColor, setButtonColor] = useState("red");
+  const [buttonColor, setButtonColor] = useState("MediumVioletRed");
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
-  const newButtonColor = buttonColor === "red" ? "blue" : "red";
+  const newButtonColor =
+    buttonColor === "MediumVioletRed" ? "MidnightBlue" : "MediumVioletRed";
 
   const onCheckboxChange = (event) => {
     setButtonDisabled(event.target.checked);
@@ -24,7 +25,7 @@ const App = () => {
         }}
         disabled={buttonDisabled}
       >
-        Change to {newButtonColor}
+        Change to {replaceCamelWithSpace(newButtonColor)}
       </button>
       <input
         type="checkbox"

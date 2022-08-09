@@ -16,7 +16,8 @@ require('./config/passport');
  * -------------- GENERAL SETUP ----------------
  */
 
-// Gives us access to variables set in the .env file via `process.env.VARIABLE_NAME` syntax
+// Gives us access to variables set in the .env file via
+// `process.env.VARIABLE_NAME` syntax
 require('dotenv').config();
 
 // Create the Express application
@@ -30,16 +31,30 @@ app.use(express.urlencoded({extended: true}));
  * -------------- SESSION SETUP ----------------
  */
 
-// TODO
+const sessioStore =
+    new MongoStore({mongooseConnection: connection, collection: 'session'});
+
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {maxAge: 100 * 60 * 60 * 24}
+}));
 
 /**
  * -------------- PASSPORT AUTHENTICATION ----------------
  */
 
+require('./config/passport');
+
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+// app.use((req, res, next) => {
+//   console.log(req.session);
+//   console.log(req.user);
+//   next();
+// });
 /**
  * -------------- ROUTES ----------------
  */
@@ -54,3 +69,4 @@ app.use(routes);
 
 // Server listens on http://localhost:3000
 app.listen(3000);
+console.log('server listening on http://localhost:3000');

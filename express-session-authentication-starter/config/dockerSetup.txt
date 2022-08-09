@@ -1,0 +1,1 @@
+docker run --name mongodbtest -d -p 27017:27017 mongo:latest

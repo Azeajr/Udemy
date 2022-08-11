@@ -11,11 +11,10 @@ const customFields = {
 };
 
 const verifyCallback = async (username, password, done) => {
-  const user =
-    await User.findOne({ username: username }).catch((error) => {
-      console.log(error);
-      done(error)
-    });
+  const user = await User.findOne({username: username}).catch((error) => {
+    console.log(error);
+    done(error)
+  });
 
   console.log(user);
   if (!user) {

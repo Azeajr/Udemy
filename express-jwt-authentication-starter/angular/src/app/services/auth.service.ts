@@ -22,16 +22,29 @@ export class AuthService {
     const expires = moment().add(responseObj.expiresIn);
 
     localStorage.setItem('token', responseObj.token);
-    localStorage.setItem('expiress', JSON.stringify(expires.valueOf()));
-    
+    localStorage.setItem('expires', JSON.stringify(expires.valueOf()));
+
   };
 
 
-  logout() {}
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('expires');
+  }
 
-  isLoggedIn() {}
+  isLoggedIn() {
+    return moment().isBefore(this.getExpiration());
+  }
 
-  isLoggedOut() {}
+  isLoggedOut() {
+    return !this.isLoggedIn();
+  }
 
-  getExpiration() {}
+  getExpiration() {
+    const expiration = localStorage.getItem('expires');
+    const expiresAt = JSON.parse(expiration);
+
+    return moment(expiresAt);
+
+  }
 }

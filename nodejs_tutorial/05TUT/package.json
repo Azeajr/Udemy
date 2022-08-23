@@ -1,0 +1,20 @@
+{
+  "name": "05tut",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "date-fns": "^2.29.2",
+    "uuid": "^8.3.2"
+  }
+}

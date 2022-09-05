@@ -329,3 +329,6 @@
 20220905	13:40:42	41922af6-6d43-434a-889a-a1ba0d8a32b6	GET	undefined	/employees/1
 20220905	13:40:47	92376f8b-285e-4784-a632-1331499c1831	POST	undefined	/auth
 20220905	13:41:00	5e9a77de-4943-4c19-b571-a878a428a2df	GET	undefined	/employees/1
+20220905	14:59:48	b630c668-69dd-4aa3-a540-c8de15e13d73	GET	undefined	/
+20220905	14:59:48	2f8bc488-3b56-4b9a-a491-26c18b4a9bdd	GET	undefined	/css/style.css
+20220905	14:59:48	cac053d5-cd76-4043-81bd-37f83aac003e	GET	undefined	/favicon.ico

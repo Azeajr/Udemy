@@ -1,7 +1,7 @@
 {
   "name": "13tut",
   "version": "1.0.0",
-  "description": "MongoDB Tutorial",
+  "description": "Async CRUD Operations Tutorial",
   "main": "server.js",
   "scripts": {
     "start": "node server",

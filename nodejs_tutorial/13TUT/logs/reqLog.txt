@@ -375,3 +375,8 @@
 20220905	22:28:02	b555fc78-b369-486a-b973-5697551fc231	PUT	undefined	/employees
 20220905	22:28:35	9ce5eda2-8423-4f81-a771-6989a428e4e3	PUT	undefined	/employees
 20220905	22:28:43	db8a3dd9-c5b2-4f82-9611-c02252acf506	GET	undefined	/employees
+20220907	10:12:45	0bff46d9-58d5-4afe-b001-043196b99992	OPTIONS	http://localhost:3000	/register
+20220907	10:12:45	4125bb81-d3d2-48f2-935f-4fb78372b1fb	POST	http://localhost:3000	/register
+20220910	21:06:44	9bc6f8d5-d606-41f1-9b54-8a23042be449	POST	undefined	/auth
+20220910	21:07:02	f104dc0c-3d12-4824-a903-6dac3bd8e9f5	OPTIONS	http://localhost:3000	/auth
+20220910	21:07:02	5a61310b-0c1d-44b5-a392-e9c4127c2101	POST	http://localhost:3000	/auth

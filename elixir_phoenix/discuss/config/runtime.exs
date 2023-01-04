@@ -1,5 +1,6 @@
 import Config
 
+Dotenvy.source!([".env", System.get_env()])
 # config/runtime.exs is executed for all environments, including
 # during releases. It is executed after compilation and before the
 # system starts, so it is typically used to load production configuration
@@ -62,6 +63,10 @@ if config_env() == :prod do
       port: port
     ],
     secret_key_base: secret_key_base
+
+  config :ueberauth, Ueberauth.Strategy.Github.OAuth,
+    client_id: Dotenvy.env!("GITHUB_CLIENT_ID"),
+    client_secret: Dotenvy.env!("GITHUB_CLIENT_SECRET")
 
   # ## Configuring the mailer
   #

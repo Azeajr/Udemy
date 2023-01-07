@@ -9,7 +9,7 @@ defmodule DiscussWeb.AuthController do
     user_params = %{
       token: auth.credentials.token,
       email: auth.info.email,
-      provider: to_string(auth.provider),
+      provider: to_string(auth.provider)
     }
 
     changeset = User.changeset(%User{}, user_params)
@@ -30,6 +30,12 @@ defmodule DiscussWeb.AuthController do
         |> put_flash(:error, "Error signing in")
         |> redirect(to: Routes.topic_path(conn, :index))
     end
+  end
+
+  def signout(conn, _params) do
+    conn
+    |> configure_session(drop: true)
+    |> redirect(to: Routes.topic_path(conn, :index))
   end
 
   defp insert_or_update_user(changeset) do

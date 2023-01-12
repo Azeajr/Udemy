@@ -3,6 +3,8 @@ defmodule DiscussWeb.TopicController do
 
   alias Discuss.Topic
 
+  plug(DiscussWeb.Plugs.RequireAuth when action in [:new, :create, :edit, :update, :delete])
+
   def new(conn, _params) do
     changeset = Topic.changeset(%Topic{}, %{})
 
@@ -51,11 +53,10 @@ defmodule DiscussWeb.TopicController do
   end
 
   def delete(conn, %{"id" => topic_id}) do
-    Discuss.Repo.get!(Topic, topic_id) |> Discuss.Repo.delete!
+    Discuss.Repo.get!(Topic, topic_id) |> Discuss.Repo.delete!()
 
     conn
     |> put_flash(:info, "Topic Deleted")
     |> redirect(to: Routes.topic_path(conn, :index))
-
   end
 end

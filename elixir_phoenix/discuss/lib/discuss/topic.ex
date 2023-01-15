@@ -4,7 +4,8 @@ defmodule Discuss.Topic do
 
   schema "topics" do
     field(:title, :string)
-    belongs_to :user, Discuss.User
+    belongs_to :user, Discuss.Users
+    has_many :comments, Discuss.Comment
 
     timestamps()
   end

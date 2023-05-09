@@ -18,7 +18,6 @@ main :: Effect Unit
 main =
   runTest do
     runChapterExamples
-    {-  Move this block comment starting point to enable more tests
     suite "Exercise Group - Recursion" do
       suite "Exercise - isEven" do
         test "0 is even" do
@@ -55,6 +54,7 @@ main =
         test "[0, 1, 19, 20] has 2" do
           Assert.equal 2
             $ countEven [ 0, 1, 19, 20 ]
+{-  Move this block comment starting point to enable more tests
     suite "Exercise Group - Maps, Infix Operators, and Filtering" do
       suite "Exercise - squared" do
         test "Do nothing with empty array" do

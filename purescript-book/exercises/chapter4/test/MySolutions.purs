@@ -6,7 +6,7 @@ import Data.Array (null, tail, head)
 import Data.Maybe (fromMaybe)
 
 -- Note to reader: Add your solutions to this file
-
+-- My solution only works due to overflow, I think.
 isEven :: Int -> Boolean
 isEven num =
   if num - 2 == 0 then
@@ -15,6 +15,14 @@ isEven num =
     false
   else
     isEven (num - 2)
+
+isEven' :: Int -> Boolean
+isEven' n =
+  if n < 0
+    then isEven'(-n)
+  else if n == 0
+    then true
+  else not(isEven'(n-1))
 
 countEven ∷ Array Int → Int
 countEven arr =
